@@ -1,5 +1,6 @@
 //STATELESS FUNCTIONAL COMPONENT
 import React from 'react';
+import PropTypes from 'prop-types';
 import {TodoItem} from './TodoItem';
 
 export const TodoList = (props) => {
@@ -11,4 +12,9 @@ export const TodoList = (props) => {
       </ul>
     </div>
   )
+}
+
+// preventing the properties to be passed in a wrong datatype (todos must be an array)
+TodoList.propTypes = {
+  todos: PropTypes.array.isRequired
 }
