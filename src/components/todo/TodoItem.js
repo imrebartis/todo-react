@@ -4,9 +4,11 @@ import {partial} from '../../lib/utils';
 
 export const TodoItem = (props) => {
   const handleToggle = partial(props.handleToggle, props.id);
+  const handleRemove = partial(props.handleRemove, props.id);
   // I'm passing an arrow function inline here because we need to pass some data that is not an event handler
   return (
     <li>
+      <span className='delete-item'><a href="#" onClick={handleRemove}>X</a></span>
       <input type="checkbox" onChange={handleToggle}
        checked={props.isComplete}/> {props.name}
     </li>
