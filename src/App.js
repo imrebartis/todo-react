@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo';
-import {addTodo, generateId, findById, toggleTodo, updateTodo, removeTodo} from './lib/todoHelpers';
+import {addTodo, generateId, findById, toggleTodo, updateTodo, removeTodo, filterTodos} from './lib/todoHelpers';
 import {pipe, partial} from './lib/utils';
 
 class App extends Component {
-  state = {
-      todos: [
-        {id: 1, name: 'Learn JSX', isComplete: true},
-        {id: 2, name: 'Build an Awesome App', isComplete: false},
-        {id: 3, name: 'Ship It', isComplete: false}
-      ],
-      currentTodo: ''
-    };
+   state = {
+    todos: [
+      {id: 1, name: 'Learn JSX', isComplete: true},
+      {id: 2, name: 'Build an Awesome App', isComplete: false},
+      {id: 3, name: 'Ship It', isComplete: false}
+    ],
+    currentTodo: ''
+  }
+
+  static contextTypes = {
+    route: React.PropTypes.string
+  }
 
    handleRemove = (id, evt) => {
     evt.preventDefault();
@@ -54,6 +58,7 @@ class App extends Component {
   }
   render() {
     const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
+    const displayTodos = filterTodos(this.state.todos, this.context.route);
 
     return (
       <div className="App">
@@ -67,7 +72,7 @@ class App extends Component {
             currentTodo={this.state.currentTodo}
             handleSubmit={submitHandler}/>
             <TodoList handleToggle={this.handleToggle}
-             todos={this.state.todos}
+             todos={displayTodos}
              handleRemove={this.handleRemove} />
              <Footer />
         </div>
