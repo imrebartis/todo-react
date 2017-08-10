@@ -28,6 +28,13 @@ export class Router extends Component {
     }
   };
 
+// this will insure that the back & forward buttons work properly
+  componentDidMount() {
+    window.onpopstate = () => {
+      this.setState({route: getCurrentPath()})
+    }
+  }
+
   render () {
     return <div>{this.props.children}</div>
   }
