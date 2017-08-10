@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "name": "Listen to some music",
+      "isComplete": true
+    },
+    {
+      "id": 2,
+      "name": "Go for a ride",
+      "isComplete": true
+    },
+    {
+      "id": 3,
+      "name": "Glide",
+      "isComplete": false
+    },
+    {
+      "id": 4,
+      "name": "Couchsurf",
+      "isComplete": false
+    }
+  ]
+}
