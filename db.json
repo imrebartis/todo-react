@@ -19,6 +19,11 @@
       "id": 4,
       "name": "Couchsurf",
       "isComplete": false
+    },
+    {
+      "id": 38013,
+      "name": "Go bananas",
+      "isComplete": false
     }
   ]
 }
